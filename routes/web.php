@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::view('/projects/create', 'projects.create');
+Route::get('/projects/{id}/show', [ProjectController::class, 'show']);

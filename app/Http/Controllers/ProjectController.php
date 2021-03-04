@@ -33,4 +33,9 @@ class ProjectController extends Controller
             'projects' => $projects
         ]);
     }
+
+    public function show($id) {
+        dd($id);
+    }
+
 }
