@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/', function () {
 // Also can be used:
 // Route::view('/', 'index');
 
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::view('/projects/create', 'projects.create');
