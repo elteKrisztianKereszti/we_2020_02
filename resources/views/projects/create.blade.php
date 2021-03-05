@@ -9,26 +9,33 @@
 
     <div class="form-group">
       <label for="name">Project name</label>
-      <input name="name" type="text" class="form-control" id="name" placeholder="">
+      <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="">
+
+      @error('name')
       <div class="invalid-feedback">
-        Please choose a username.
+        {{ $message }}
       </div>
+      @enderror
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+      <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3"></textarea>
+      @error('description')
       <div class="invalid-feedback">
-        Please choose a username.
+        {{ $message }}
       </div>
+      @enderror
     </div>
 
     <div class="form-group">
       <label for="image_url">Background image URL</label>
-      <input name="image_url" type="text" class="form-control" id="image_url" placeholder="">
+      <input name="image_url" type="text" class="form-control @error('image_url') is-invalid @enderror" id="image_url" placeholder="">
+      @error('image_url')
       <div class="invalid-feedback">
-        Please choose a username.
+        {{ $message }}
       </div>
+      @enderror
     </div>
 
     <div class="form-group">
@@ -37,3 +44,5 @@
 
   </form>
 @endsection
+
+

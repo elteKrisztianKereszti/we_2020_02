@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ProjectController extends Controller
 {
@@ -40,7 +41,16 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        // dd($_POST);
-        dd($request);
+        //dd($_POST);
+        //dd($request);
+        $request->validate([
+            'name' => 'required',
+            'description' => 'nullable',
+            'image_url' => 'nullable|url'
+        ]);
+
+        // store in database
+
+        return redirect('/projects');
     }
 }
