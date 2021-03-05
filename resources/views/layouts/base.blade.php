@@ -18,7 +18,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/projects">Projects</a>
+          <a class="nav-item nav-link" href="{{route('projects.list') }}">Projects</a>
           <a class="nav-item nav-link" href="transposer.html">Transposer</a>
           <a class="nav-item nav-link" href="/projects/create">New project</a>
           <a class="nav-item nav-link" href="about.html">About</a>

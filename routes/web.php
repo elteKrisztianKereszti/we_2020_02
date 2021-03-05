@@ -20,10 +20,14 @@ Route::get('/', function () {
 // Also can be used:
 // Route::view('/', 'index');
 
-Route::get('/projects', [ProjectController::class, 'index']);
-Route::view('/projects/create', 'projects.create');
-Route::get('/projects/{id}/show', [ProjectController::class, 'show'] );
-Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'] );
-Route::put('/projects/{id}', [ProjectController::class, 'update'] );
-Route::post('projects/create', [ProjectController::class, 'store'] );
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.list');
+
+Route::get('/projects/{id}/show', [ProjectController::class, 'show'] )->name('projects.show');
+
+Route::view('/projects/create', 'projects.create')->name('projects.create');
+Route::post('projects/create', [ProjectController::class, 'store'] )->name('projects.store');
+
+Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
+Route::put('/projects/{id}', [ProjectController::class, 'update'] )->name('projects.update');
+
 

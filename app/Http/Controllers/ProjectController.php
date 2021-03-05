@@ -64,7 +64,7 @@ class ProjectController extends Controller
 
         //dd($request);
 
-        return redirect('/projects');
+        return redirect()->route('projects.list');
     }
 
     public function store(Request $request)
@@ -79,6 +79,6 @@ class ProjectController extends Controller
 
         // store in database
 
-        return redirect('/projects');
+        return redirect()->route('projects.list');
     }
 }

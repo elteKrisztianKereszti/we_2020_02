@@ -2,7 +2,7 @@
 
 @section('content')
   <h2>New project</h2>
-  <form action="/projects/{{$project['id']}}" method="post">
+  <form action="{{route('projects.update', [ 'id' => $project['id']]) }}" method="post">
     <!-- GET, POST, PUT, PATCH, DELETE ...  -->
     @method('put')
     @csrf
