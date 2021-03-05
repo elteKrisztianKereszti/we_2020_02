@@ -14,19 +14,19 @@ class ProjectController extends Controller
                 'id' => 1,
                 'name' => 'ProjectName #1',
                 'description' => 'ProjectDescription #1',
-                'url' => null
+                'image_url' => null
             ],
             [
                 'id' => 2,
                 'name' => 'ProjectName #2',
                 'description' => 'ProjectDescription #2',
-                'url' => 'https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340'
+                'image_url' => 'https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340'
             ],
             [
                 'id' => 999,
                 'name' => 'ProjectName #n',
                 'description' => 'ProjectDescription #n',
-                'url' => null
+                'image_url' => null
             ],
         ];
 
@@ -37,6 +37,21 @@ class ProjectController extends Controller
 
     public function show($id) {
         dd($id);
+    }
+
+    public function edit($id)
+    {
+        // Fetch data from database via id
+
+        $project = [
+                        'id' => 2,
+                        'name' => 'ProjectName #2',
+                        'description' => 'ProjectDescription #2',
+                        'image_url' => 'https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340'
+        ];
+        return view('projects.edit', [
+            'project' => $project
+        ]);
     }
 
     public function store(Request $request)

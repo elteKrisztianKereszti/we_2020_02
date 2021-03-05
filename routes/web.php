@@ -23,5 +23,6 @@ Route::get('/', function () {
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::view('/projects/create', 'projects.create');
 Route::get('/projects/{id}/show', [ProjectController::class, 'show'] );
+Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'] );
 Route::post('projects/create', [ProjectController::class, 'store'] );
 
