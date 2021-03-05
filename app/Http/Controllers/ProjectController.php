@@ -38,4 +38,9 @@ class ProjectController extends Controller
         dd($id);
     }
 
+    public function store(Request $request)
+    {
+        // dd($_POST);
+        dd($request);
+    }
 }
