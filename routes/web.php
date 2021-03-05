@@ -29,5 +29,5 @@ Route::post('projects/create', [ProjectController::class, 'store'] )->name('proj
 
 Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
 Route::put('/projects/{id}', [ProjectController::class, 'update'] )->name('projects.update');
-
+Route::delete('/projects/{id}', [ProjectController::class, 'delete'] )->name('projects.delete');
 

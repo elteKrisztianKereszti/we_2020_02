@@ -12,7 +12,6 @@
             <p class="card-text">{{ $project['description'] }}</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             <a href="{{route('projects.show', [ 'id' => $project['id']]) }}" class="btn btn-primary">Open</a>
-            <a href="{{route('projects.edit', [ 'id' => $project['id']]) }}" class="btn btn-secondary">Edit</a>
           </div>
         </div>
       </div>
