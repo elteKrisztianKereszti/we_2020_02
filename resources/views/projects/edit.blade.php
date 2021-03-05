@@ -4,7 +4,7 @@
   <h2>New project</h2>
   <form action="/projects/1" method="post">
     <!-- GET, POST, PUT, PATCH, DELETE ...  -->
-
+    @method('put')
     @csrf
 
     <div class="form-group">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Update project</button>
+        <button type="submit" class="btn btn-primary">Update project</button>
     </div>
 
   </form>
