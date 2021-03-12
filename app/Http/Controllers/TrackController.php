@@ -9,16 +9,6 @@ use Illuminate\Http\Request;
 class TrackController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -44,17 +34,6 @@ class TrackController extends Controller
         $project->tracks()->create($validated_data);
 
         return redirect()->route('projects.show', [ 'project' => $project->id ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Track  $track
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Track $track)
-    {
-        //
     }
 
     /**
