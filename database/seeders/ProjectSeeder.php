@@ -15,7 +15,6 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        //
         DB::table('projects')->truncate();
         Project::factory()->count(10)->create();
     }

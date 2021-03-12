@@ -1,8 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
-  <h2>New project</h2>
-  <form action="{{route('projects.update', [ 'id' => $project['id']]) }}" method="post">
+  <h2>Edit project</h2>
+  <form action="{{route('projects.update', [ 'project' => $project->id ]) }}" method="post">
     <!-- GET, POST, PUT, PATCH, DELETE ...  -->
     @method('put')
     @csrf

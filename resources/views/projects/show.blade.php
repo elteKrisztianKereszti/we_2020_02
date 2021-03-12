@@ -5,8 +5,8 @@
     <div class="container py-3">
       <h2>{{ $project->name }}</h2>
       <p>{{ $project->desription }}</p>
-      <a href="{{ route('projects.edit', [ 'id' => $project['id']]) }}" class="btn btn-secondary">Edit</a>
-      <form action="{{ route('projects.delete', [ 'id' => $project['id']]) }}" method="POST" class="d-inline">
+      <a href="{{ route('projects.edit', [ 'project' => $project->id ]) }}" class="btn btn-secondary">Edit</a>
+      <form action="{{ route('projects.delete', [ 'project' => $project->id ]) }}" method="POST" class="d-inline">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-warning">Delete</button>

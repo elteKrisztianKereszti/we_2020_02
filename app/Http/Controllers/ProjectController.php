@@ -16,23 +16,20 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show($id) {
-        $project = Project::find($id);
-
+    public function show(Project $project) {
         return view('projects.show', [
             'project' => $project
         ]);
     }
 
-    public function edit($id)
+    public function edit(Project $project)
     {
-        $project = Project::find($id);
         return view('projects.edit', [
             'project' => $project
         ]);
     }
 
-    public function update($id, Request $request)
+    public function update(Project $project, Request $request)
     {
         $validated_data = $request->validate([
             'name' => 'required',
@@ -40,10 +37,9 @@ class ProjectController extends Controller
             'image_url' => 'nullable|url'
         ]);
 
-        $project = Project::find($id);
         $project->update($validated_data);
 
-        return redirect()->route('projects.list');
+        return redirect()->route('projects.show', [ 'project' => $project->id ]);
     }
 
     public function store(Request $request)
@@ -58,9 +54,8 @@ class ProjectController extends Controller
         return redirect()->route('projects.list');
     }
 
-    public function delete($id)
+    public function delete(Project $project)
     {
-        $project = Project::find($id);
         $project->delete();
 
         return redirect()->route('projects.list');
