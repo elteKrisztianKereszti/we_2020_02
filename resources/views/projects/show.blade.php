@@ -30,6 +30,11 @@
                     <li class="list-group-item p-1">Morbi leo risus</li>
                 </ul>
                 <a href="{{ route('tracks.edit', [ 'track' => $track->id ]) }}" class="btn btn-secondary">Edit</a>
+                <form action="{{ route('tracks.destroy', [ 'track' => $track->id ]) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-warning">Delete</button>
+                  </form>
 
             </li>
           @endforeach

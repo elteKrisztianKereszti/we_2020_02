@@ -95,6 +95,8 @@ class TrackController extends Controller
      */
     public function destroy(Track $track)
     {
-        //
+        $track->delete();
+
+        return redirect()->route('projects.show', [ 'project' => $track->project_id ]);
     }
 }
