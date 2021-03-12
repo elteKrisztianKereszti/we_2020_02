@@ -29,8 +29,9 @@
                     <li class="list-group-item p-1">Dapibus ac facilisis in</li>
                     <li class="list-group-item p-1">Morbi leo risus</li>
                 </ul>
-            </li>
+                <a href="{{ route('tracks.edit', [ 'track' => $track->id ]) }}" class="btn btn-secondary">Edit</a>
 
+            </li>
           @endforeach
       </ul>
     </div>

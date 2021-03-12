@@ -65,7 +65,7 @@ class TrackController extends Controller
      */
     public function edit(Track $track)
     {
-        //
+        return view('tracks.edit', [ 'track' => $track ]);
     }
 
     /**
@@ -77,7 +77,14 @@ class TrackController extends Controller
      */
     public function update(Request $request, Track $track)
     {
-        //
+        $validated_data = $request->validate([
+            'name'      => 'required',
+            'color'     => 'required|regex:/^#[0-9a-z]{6}$/',
+        ]);
+
+        $track->update($validated_data);
+
+        return redirect()->route('projects.show', [ 'project' => $track->project_id ]);
     }
 
     /**
