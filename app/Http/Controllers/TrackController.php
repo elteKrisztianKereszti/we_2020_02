@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\Track;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,9 @@ class TrackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
-        //
+        return view('tracks.create', [ 'project_id' => $project->id ]);
     }
 
     /**
@@ -33,9 +34,16 @@ class TrackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Project $project, Request $request)
     {
-        //
+        $validated_data = $request->validate([
+            'name'      => 'required',
+            'color'     => 'required|regex:/^#[0-9a-z]{6}$/',
+        ]);
+
+        $project->tracks()->create($validated_data);
+
+        return redirect()->route('projects.show', [ 'project' => $project->id ]);
     }
 
     /**
