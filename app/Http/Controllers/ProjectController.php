@@ -16,6 +16,11 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('projects.create');
+    }
+
     public function show(Project $project) {
         return view('projects.show', [
             'project' => $project
@@ -51,13 +56,13 @@ class ProjectController extends Controller
         ]);
         Project::create($validated_data);
 
-        return redirect()->route('projects.list');
+        return redirect()->route('projects.index');
     }
 
-    public function delete(Project $project)
+    public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect()->route('projects.list');
+        return redirect()->route('projects.index');
     }
 }
