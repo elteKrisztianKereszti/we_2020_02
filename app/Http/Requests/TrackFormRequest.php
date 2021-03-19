@@ -26,6 +26,7 @@ class TrackFormRequest extends FormRequest
         return [
             'name'      => 'required',
             'color'     => 'required|regex:/^#[0-9a-z]{6}$/',
+            'filters'   => 'nullable|array',
         ];
     }
 }

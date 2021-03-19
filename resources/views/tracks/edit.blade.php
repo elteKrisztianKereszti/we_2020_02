@@ -37,17 +37,18 @@
           @enderror
         </div>
 
-        <div class="form-group d-flex">
-            <div class="custom-control custom-switch col-sm-2">
-              <input type="checkbox" class="custom-control-input" id="customSwitch1">
-              <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-            </div>
-            <div class="custom-control custom-switch col-sm-2">
-              <input type="checkbox" class="custom-control-input" id="customSwitch2">
-              <label class="custom-control-label" for="customSwitch2">Toggle this switch element</label>
-            </div>
-        </div>
-
+        <div class="form-group d-flex flex-wrap">
+            @foreach ($filters as $filter)
+              <div class="custom-control custom-switch col-sm-2">
+                <input type="checkbox" class="custom-control-input" name="filters[]" id="filter-{{ $filter['id'] }}" value="{{ $filter['id'] }}"
+                  @if ($track->filters->contains($filter)) checked @endif
+                >
+                <label class="custom-control-label" for="filter-{{ $filter['id'] }}">
+                  {{ $filter['name'] }}
+                </label>
+              </div>
+            @endforeach
+          </div>
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Update track</button>

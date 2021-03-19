@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TrackFormRequest;
+use App\Models\Filter;
 use App\Models\Project;
 use App\Models\Track;
 use Illuminate\Http\Request;
@@ -42,7 +43,10 @@ class TrackController extends Controller
      */
     public function edit(Track $track)
     {
-        return view('tracks.edit', [ 'track' => $track ]);
+        return view('tracks.edit', [
+            'track' => $track,
+            'filters' => Filter::all()
+        ]);
     }
 
     /**
@@ -57,7 +61,7 @@ class TrackController extends Controller
         $validated_data = $request->validated();
 
         $track->update($validated_data);
-
+        $track->filters()->sync($validated_data['filters'] ?? []);
         return redirect()->route('projects.show', [ 'project' => $track->project_id ]);
     }
 
