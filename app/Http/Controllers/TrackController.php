@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TrackFormRequest;
 use App\Models\Project;
 use App\Models\Track;
 use Illuminate\Http\Request;
@@ -24,12 +25,9 @@ class TrackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Project $project, Request $request)
+    public function store(Project $project, TrackFormRequest $request)
     {
-        $validated_data = $request->validate([
-            'name'      => 'required',
-            'color'     => 'required|regex:/^#[0-9a-z]{6}$/',
-        ]);
+        $validated_data = $request->validated();
 
         $project->tracks()->create($validated_data);
 
@@ -54,12 +52,9 @@ class TrackController extends Controller
      * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Track $track)
+    public function update(TrackFormRequest $request, Track $track)
     {
-        $validated_data = $request->validate([
-            'name'      => 'required',
-            'color'     => 'required|regex:/^#[0-9a-z]{6}$/',
-        ]);
+        $validated_data = $request->validated();
 
         $track->update($validated_data);
 
