@@ -17,7 +17,10 @@ class TrackController extends Controller
      */
     public function create(Project $project)
     {
-        return view('tracks.create', [ 'project_id' => $project->id ]);
+        return view('tracks.create', [
+            'project_id' => $project->id,
+            'filters' => Filter::all()
+        ]);
     }
 
     /**
@@ -30,8 +33,8 @@ class TrackController extends Controller
     {
         $validated_data = $request->validated();
 
-        $project->tracks()->create($validated_data);
-
+        $track = $project->tracks()->create($validated_data);
+        $track->filters()->sync($validated_data['filters'] ?? []);
         return redirect()->route('projects.show', [ 'project' => $project->id ]);
     }
 
