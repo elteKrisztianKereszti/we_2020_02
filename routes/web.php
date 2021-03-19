@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TrackController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::resource('projects', ProjectController::class)->middleware(['auth']);
+Route::resource('projects.tracks', TrackController::class)->shallow()->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

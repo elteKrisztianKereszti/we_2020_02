@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $user_id = Auth::id();
+        $projects = Project::all()->where('user_id', $user_id);
+
         return view('projects.index', [
             'projects' => $projects
         ]);
@@ -23,6 +26,8 @@ class ProjectController extends Controller
     }
 
     public function show(Project $project) {
+        $this->authorize('view', $project);
+
         return view('projects.show', [
             'project' => $project
         ]);
