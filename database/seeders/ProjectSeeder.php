@@ -19,6 +19,7 @@ class ProjectSeeder extends Seeder
     public function run()
     {
         DB::table('projects')->truncate();
+        DB::table('tracks')->truncate();
 
         $filters = Filter::all();
         $users = User::all();

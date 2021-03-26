@@ -7,9 +7,15 @@ use App\Models\Filter;
 use App\Models\Project;
 use App\Models\Track;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TrackController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Track::class, 'track');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
