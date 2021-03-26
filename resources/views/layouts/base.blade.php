@@ -42,13 +42,9 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
+                            <button type="submit" class="dropdown-item">Logout</button>
                         </form>
                     </div>
                 </li>
