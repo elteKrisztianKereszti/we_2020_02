@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Project::class, 'project');
+    }
+
     public function index()
     {
         return view('projects.index', [
@@ -22,9 +27,8 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    public function show(Project $project) {
-        $this->authorize('view', $project);
-
+    public function show(Project $project)
+    {
         return view('projects.show', [
             'project' => $project
         ]);

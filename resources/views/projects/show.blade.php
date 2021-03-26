@@ -4,7 +4,7 @@
 
     <div class="container py-3">
       <h2>{{ $project->name }}</h2>
-      <p>{{ $project->desription }}</p>
+      <p>{{ $project->description }}</p>
       <a href="{{ route('projects.edit', [ 'project' => $project->id ]) }}" class="btn btn-secondary">Edit</a>
       <form action="{{ route('projects.destroy', [ 'project' => $project->id ]) }}" method="POST" class="d-inline">
         @csrf

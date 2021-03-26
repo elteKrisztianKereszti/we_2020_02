@@ -18,7 +18,7 @@ class ProjectPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project)
     {
-        return $project->user == $user;
+        return $this->hasAccess($user, $project);
     }
 
     /**
@@ -41,7 +41,7 @@ class ProjectPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project)
     {
-        //
+        return $this->hasAccess($user, $project);
     }
 
     /**
@@ -65,7 +65,7 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project)
     {
-        //
+        return $this->hasAccess($user, $project);
     }
 
     /**
@@ -77,7 +77,7 @@ class ProjectPolicy
      */
     public function restore(User $user, Project $project)
     {
-        //
+        return $this->hasAccess($user, $project);
     }
 
     /**
@@ -89,6 +89,11 @@ class ProjectPolicy
      */
     public function forceDelete(User $user, Project $project)
     {
-        //
+        return $this->hasAccess($user, $project);
+    }
+
+    private function hasAccess(User $user, Project $project)
+    {
+        return $project->user == $user;
     }
 }
