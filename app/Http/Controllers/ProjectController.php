@@ -12,11 +12,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $user_id = Auth::id();
-        $projects = Project::all()->where('user_id', $user_id);
-
         return view('projects.index', [
-            'projects' => $projects
+            'projects' => Auth::user()->projects
         ]);
     }
 
@@ -52,7 +49,7 @@ class ProjectController extends Controller
     public function store(ProjectFormRequest $request)
     {
         $validated_data = $request->validated();
-
+        $validated_data['user_id'] = Auth::id();
         Project::create($validated_data);
 
         return redirect()->route('projects.index');
